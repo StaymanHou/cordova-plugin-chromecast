@@ -34,9 +34,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 
-import androidx.mediarouter.media.MediaRouter;
-import androidx.mediarouter.media.MediaRouteSelector;
-import androidx.mediarouter.media.MediaRouter.RouteInfo;
+import android.support.v7.media.MediaRouter;
+import android.support.v7.media.MediaRouteSelector;
+import android.support.v7.media.MediaRouter.RouteInfo;
+// import androidx.mediarouter.media.MediaRouter;
+// import androidx.mediarouter.media.MediaRouteSelector;
+// import androidx.mediarouter.media.MediaRouter.RouteInfo;
 
 import android.util.Log;
 import android.widget.ArrayAdapter;

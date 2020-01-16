@@ -1,6 +1,7 @@
 package acidhax.cordova.chromecast;
 
-import androidx.mediarouter.media.MediaRouter;
+import android.support.v7.media.MediaRouter;
+// import androidx.mediarouter.media.MediaRouter;
 
 import java.util.Comparator;
 

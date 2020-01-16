@@ -3,8 +3,10 @@ package acidhax.cordova.chromecast;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import androidx.mediarouter.media.MediaRouter;
-import androidx.mediarouter.media.MediaRouter.RouteInfo;
+import android.support.v7.media.MediaRouter;
+import android.support.v7.media.MediaRouter.RouteInfo;
+// import androidx.mediarouter.media.MediaRouter;
+// import androidx.mediarouter.media.MediaRouter.RouteInfo;
 
 public class ChromecastMediaRouterCallback extends MediaRouter.Callback {
 	private volatile ArrayList<RouteInfo> routes = new ArrayList<RouteInfo>();

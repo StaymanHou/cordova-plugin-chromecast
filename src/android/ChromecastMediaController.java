@@ -124,7 +124,7 @@ public class ChromecastMediaController {
 			for (int i = 0; i < imageUrls.length(); i++) {
 				JSONObject imageObj = imageUrls.getJSONObject(i);
 				String imageUrl = imageObj.has("url") ? imageObj.getString("url") : "undefined";
-				if (imageUrl.indexOf("http://") < 0) {
+				if (imageUrl.indexOf("http://") < 0 || imageUrl.indexOf("https://") < 0) {
 					continue;
 				}
 				Uri imageURI = Uri.parse(imageUrl);

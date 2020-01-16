@@ -1226,7 +1226,6 @@ chrome.cast._ = {
 		}
 	},
 	mediaUpdated: function(isAlive, media) {
-
 		if (media && media.mediaSessionId !== undefined)
 		{
 			if (_currentMedia) {

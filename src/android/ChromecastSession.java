@@ -28,7 +28,8 @@ import com.google.android.gms.common.images.WebImage;
 
 import android.os.Bundle;
 
-import androidx.mediarouter.media.MediaRouter.RouteInfo;
+import android.support.v7.media.MediaRouter.RouteInfo;
+// import androidx.mediarouter.media.MediaRouter.RouteInfo;
 
 /*
  * All of the Chromecast session specific functions should start here.
