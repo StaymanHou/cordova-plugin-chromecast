@@ -71,7 +71,6 @@ import GoogleCast
     )
   }
 
-  @objc(checkReceiverAvailable:)
   func checkReceiverAvailable() {
     let sessionManager = GCKCastContext.sharedInstance().sessionManager
 
@@ -97,7 +96,17 @@ import GoogleCast
     }
 
     alert.addAction(
-        UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+        UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_) in
+          let pluginResult = CDVPluginResult(
+              status: CDVCommandStatus_ERROR,
+              messageAs: "cancel"
+          )
+
+          self.commandDelegate!.send(
+              pluginResult,
+              callbackId: command.callbackId
+          )
+        })
     )
 
     self.viewController?.present(alert, animated: true, completion: nil)
@@ -156,8 +165,8 @@ import GoogleCast
     let streamType = command.arguments[4] as? String ?? ""
     let autoplay = command.arguments[5] as? Bool ?? true
     let currentTime = command.arguments[6] as? Double ?? 0
-    let metadata = command.arguments[7] as? Data ?? Data()
-    let textTrackStyle = command.arguments[8] as? Data ?? Data()
+    let metadata = (try? JSONSerialization.data(withJSONObject: command.arguments[7], options: [])) ?? Data()
+    let textTrackStyle = (try? JSONSerialization.data(withJSONObject: command.arguments[8], options: [])) ?? Data()
 
     let mediaInfo = CastUtilities.buildMediaInformation(contentUrl: contentId, customData: customData, contentType: contentType, duration: duration, streamType: streamType, textTrackStyle: textTrackStyle, metadata: metadata)
 
@@ -207,7 +216,7 @@ import GoogleCast
   @objc(mediaEditTracksInfo:)
   func mediaEditTracksInfo(command: CDVInvokedUrlCommand) {
     let activeTrackIds = command.arguments[0] as? [NSNumber] ?? [NSNumber]()
-    let textTrackStyle = command.arguments[1] as? Data ?? Data()
+    let textTrackStyle = (try? JSONSerialization.data(withJSONObject: command.arguments[1], options: [])) ?? Data()
 
     let textTrackStyleObject = CastUtilities.buildTextTrackStyle(textTrackStyle)
     self.currentSession?.setActiveTracks(command, activeTrackIds: activeTrackIds, textTrackStyle: textTrackStyleObject)
